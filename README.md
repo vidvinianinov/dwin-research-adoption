@@ -71,4 +71,6 @@ The local stdio package is Apache-2.0. A future hosted service may add managed s
 
 See [SECURITY.md](SECURITY.md), [Privacy](docs/privacy.md), and [Terms](docs/terms.md). Report vulnerabilities privately rather than opening a public issue.
 
+The dependency-ordered product milestones and exit criteria are in the [goal chain](docs/roadmap.md).
+
 MCP Registry name: `io.github.vidvinianinov/dwin-research-adoption`
