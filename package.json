@@ -39,7 +39,7 @@
     "test/fixtures/"
   ],
   "engines": {
-    "node": ">=20.19.0"
+    "node": ">=22"
   },
   "packageManager": "npm@11.19.0",
   "scripts": {
