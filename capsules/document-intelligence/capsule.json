@@ -1,0 +1,18 @@
+{
+  "schema_version": "dwin.capsule/v1",
+  "id": "document-intelligence",
+  "version": "0.1.0",
+  "description": "Parse explicitly registered local research PDFs with pinned offline Docling into source-bound blocks and lossless private snapshots.",
+  "capabilities": {
+    "network": false,
+    "read_scopes": ["registered-documents"],
+    "write_scope": "factory-data"
+  },
+  "jobs": [
+    { "id": "extract-registered", "script": "jobs/extract-registered.mjs", "timeout_seconds": 300, "schedule": "manual" },
+    { "id": "fixture-evaluation", "script": "jobs/fixture-evaluation.mjs", "timeout_seconds": 300, "schedule": "manual" }
+  ],
+  "evaluators": [
+    { "id": "document-integrity", "script": "evals/document-integrity.mjs", "timeout_seconds": 30 }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": "dwin.release-receipt/v1",
+  "package": "dwin-research-adoption",
+  "version": "0.1.0",
+  "generated_at": "2026-09-07T00:17:16.356Z",
+  "source_tree_sha256": "dd39ac6f2de1030c8277d8de3aa3c6ef0b9ddd329c19bba57a6772518a0607a6",
+  "source_files": 133,
+  "gates": {
+    "capsule_validation": "PASS",
+    "unit_tests": "PASS",
+    "unified_mcp_smoke": "PASS",
+    "reproducible_demo": "PASS",
+    "marketplace_test_pack": "PASS",
+    "privacy_and_secret_audit": "PASS"
+  },
+  "authority": "release-proof-not-scientific-effectiveness"
+}

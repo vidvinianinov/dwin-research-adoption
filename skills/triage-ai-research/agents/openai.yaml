@@ -1,0 +1,4 @@
+interface:
+  display_name: "Triage AI Research"
+  short_description: "Find and qualify actionable AI papers"
+  default_prompt: "Use $triage-ai-research to find and qualify recent papers for this AI problem."

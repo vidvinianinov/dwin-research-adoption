@@ -1,0 +1,15 @@
+{
+  "schema_version": "dwin.policy/v1",
+  "max_timeout_seconds": 300,
+  "max_output_bytes": 1048576,
+  "default_network": "deny",
+  "allowed_network_domains": ["export.arxiv.org", "arxiv.org", "127.0.0.1"],
+  "allowed_triggers": ["manual", "mcp", "test"],
+  "daily_capsule_order": ["research-radar", "research-adoption", "memory-graph", "factory-health"],
+  "artifact_hash": "sha256",
+  "require_evaluators": true,
+  "enforcement_notes": {
+    "filesystem": "Jobs receive a capsule root and an isolated run output directory.",
+    "network": "Networked capsules require an admitted allowlist and fixed application endpoints. This is not an OS egress sandbox."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Research adoption",
+      "description": "Find, ground, test, and selectively retain useful AI research.",
+      "skills": [
+        "triage-ai-research",
+        "adopt-research-into-setup",
+        "review-evidence-and-memory"
+      ]
+    }
+  ]
+}

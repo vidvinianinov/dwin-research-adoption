@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://dwin.local/contracts/arxiv-category.schema.json",
+  "title": "DWIN monitored arXiv category",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "id", "name", "domain", "monitoring_tier", "scope_hint", "api_query",
+    "recent_list_url", "default_sort_by", "default_sort_order", "default_max_results",
+    "authority", "content_trust", "instruction_authority"
+  ],
+  "properties": {
+    "schema_version": { "const": "dwin.arxiv-category/v1" },
+    "id": { "enum": ["cs.AI", "cs.IR", "cs.DB", "cs.DS", "cs.LG", "cs.MA", "stat.ML"] },
+    "name": { "type": "string", "minLength": 2, "maxLength": 100 },
+    "domain": { "enum": ["Computer Science", "Statistics"] },
+    "monitoring_tier": { "enum": ["core", "adjacent"] },
+    "scope_hint": { "type": "string", "minLength": 10, "maxLength": 300 },
+    "api_query": { "type": "string", "pattern": "^cat:(?:cs\\.(?:AI|IR|DB|DS|LG|MA)|stat\\.ML)$" },
+    "recent_list_url": { "type": "string", "format": "uri", "pattern": "^https://arxiv\\.org/list/" },
+    "default_sort_by": { "const": "submittedDate" },
+    "default_sort_order": { "const": "descending" },
+    "default_max_results": { "type": "integer", "minimum": 1, "maximum": 200 },
+    "authority": { "const": "candidate-only" },
+    "content_trust": { "const": "catalog-authored" },
+    "instruction_authority": { "const": "none" }
+  }
+}

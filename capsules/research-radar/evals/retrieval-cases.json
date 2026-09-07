@@ -1,0 +1,34 @@
+{
+  "schema_version": "dwin.research-retrieval-cases/v1",
+  "method": "fixed-query-template-retrieval",
+  "requirements": [
+    "[critical] expected arXiv identifier appears in the bounded result page",
+    "[critical] compiled request targets export.arxiv.org only",
+    "[critical] repeated identical search is served from local cache without a network request",
+    "rank and cache provenance are recorded"
+  ],
+  "cases": [
+    {
+      "id": "skill-evolution-persistent-knowledge",
+      "problem": "Compile agent experience into persistent knowledge for skill evolution.",
+      "template_id": "skill-evolution-persistent-knowledge",
+      "expected_arxiv_id": "2608.27454",
+      "since": "2026-08-20",
+      "until": "2026-08-30",
+      "max_results": 50,
+      "sort_by": "relevance",
+      "sort_order": "descending"
+    },
+    {
+      "id": "post-training-strategy-reevaluation",
+      "problem": "Find empirical evidence about post-training agents failing to reevaluate strategy during execution.",
+      "template_id": "agent-strategy-adaptation",
+      "expected_arxiv_id": "2608.19072",
+      "since": "2026-08-15",
+      "until": "2026-08-30",
+      "max_results": 50,
+      "sort_by": "relevance",
+      "sort_order": "descending"
+    }
+  ]
+}

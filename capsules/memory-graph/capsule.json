@@ -1,0 +1,17 @@
+{
+  "schema_version": "dwin.capsule/v1",
+  "id": "memory-graph",
+  "version": "0.1.0",
+  "description": "Maintain append-only, experiment-backed personal setup memories with provenance, confidence, expiry, supersession, explicit approval, and deterministic validation.",
+  "capabilities": {
+    "network": false,
+    "read_scopes": ["registered-documents"],
+    "write_scope": "factory-data"
+  },
+  "jobs": [
+    { "id": "validate-memory", "script": "jobs/validate-memory.mjs", "timeout_seconds": 60, "schedule": "daily" }
+  ],
+  "evaluators": [
+    { "id": "memory-integrity", "script": "evals/integrity.mjs", "timeout_seconds": 60 }
+  ]
+}

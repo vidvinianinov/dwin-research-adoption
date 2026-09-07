@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "dwin.document-snapshot/v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "source_id", "source_sha256", "source_bytes", "parser", "parser_version", "parser_config_hash", "model_artifacts_hash", "page_count", "blocks", "markdown", "docling_document"],
+  "properties": {
+    "schema_version": { "const": "dwin.document-snapshot/v1" },
+    "source_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+    "source_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "source_bytes": { "type": "integer", "minimum": 1, "maximum": 26214400 },
+    "parser": { "const": "docling" },
+    "parser_version": { "const": "2.126.0" },
+    "parser_config_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "model_artifacts_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "page_count": { "type": "integer", "minimum": 1, "maximum": 64 },
+    "blocks": {
+      "type": "array",
+      "maxItems": 20000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "ordinal", "label", "text", "text_sha256", "level", "provenance"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "ordinal": { "type": "integer", "minimum": 0 },
+          "label": { "type": "string", "minLength": 1, "maxLength": 64 },
+          "text": { "type": "string", "minLength": 1, "maxLength": 20000 },
+          "text_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "level": { "type": "integer", "minimum": 0, "maximum": 100 },
+          "provenance": {
+            "type": "array",
+            "maxItems": 64,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["page_no", "bbox", "charspan"],
+              "properties": {
+                "page_no": { "type": "integer", "minimum": 1, "maximum": 64 },
+                "bbox": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["l", "t", "r", "b", "coord_origin"],
+                  "properties": {
+                    "l": { "type": "number" },
+                    "t": { "type": "number" },
+                    "r": { "type": "number" },
+                    "b": { "type": "number" },
+                    "coord_origin": { "type": "string" }
+                  }
+                },
+                "charspan": {
+                  "type": "array",
+                  "items": { "type": "integer", "minimum": 0 },
+                  "minItems": 2,
+                  "maxItems": 2
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "markdown": { "type": "string" },
+    "docling_document": { "type": "object" }
+  }
+}

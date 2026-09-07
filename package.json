@@ -1,0 +1,86 @@
+{
+  "name": "dwin-research-adoption",
+  "version": "0.1.0",
+  "description": "Local-first MCP and skills for finding, grounding, evaluating, and adopting AI research.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "author": "Vitalii Dvinianinov",
+  "homepage": "https://github.com/dvinianinov/dwin-research-adoption#readme",
+  "bugs": {
+    "url": "https://github.com/dvinianinov/dwin-research-adoption/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dvinianinov/dwin-research-adoption.git"
+  },
+  "mcpName": "io.github.dvinianinov/dwin-research-adoption",
+  "bin": {
+    "dwin-research-adoption": "bin/dwin-research-adoption.mjs"
+  },
+  "files": [
+    ".codex-plugin/plugin.json",
+    "AGENTS.md",
+    "LICENSE",
+    "README.md",
+    "SECURITY.md",
+    "assets/",
+    "bin/",
+    "capsules/",
+    "contracts/",
+    "docs/",
+    "evidence/release-receipt.json",
+    "marketplace-test-pack.json",
+    "policies/",
+    "scripts/",
+    "server.json",
+    "skills/",
+    "skills.sh.json",
+    "src/",
+    "test/fixtures/"
+  ],
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "packageManager": "npm@11.19.0",
+  "scripts": {
+    "start": "node ./bin/dwin-research-adoption.mjs",
+    "doctor": "node ./bin/dwin-research-adoption.mjs doctor",
+    "validate": "node ./bin/dwin-research-adoption.mjs validate",
+    "demo": "node ./scripts/demo.mjs",
+    "test": "node --test ./test/*.test.mjs",
+    "test:mcp": "node ./test/mcp-smoke.mjs",
+    "test:package": "node ./scripts/package-smoke.mjs",
+    "test:marketplace": "node ./scripts/validate-marketplace-pack.mjs",
+    "audit:release": "node ./scripts/release-audit.mjs",
+    "receipt:release": "node ./scripts/release-receipt.mjs",
+    "verify": "npm run validate && npm test && npm run test:mcp && npm run demo && npm run test:marketplace && npm run audit:release && npm run test:package && npm run receipt:release",
+    "prepublishOnly": "npm run verify"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "4.2.0",
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "ajv": "8.20.0",
+    "better-sqlite3": "13.0.3",
+    "fast-xml-parser": "5.11.1",
+    "sqlite-vec": "0.1.9",
+    "zod": "4.5.4"
+  },
+  "overrides": {
+    "@huggingface/transformers": {
+      "sharp": "0.35.4"
+    },
+    "onnxruntime-node": {
+      "adm-zip": "0.6.0"
+    }
+  },
+  "allowScripts": {
+    "better-sqlite3@13.0.3": true
+  },
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "devDependencies": {},
+  "keywords": []
+}

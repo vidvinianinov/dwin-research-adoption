@@ -1,0 +1,4 @@
+interface:
+  display_name: "Adopt Research Into Setup"
+  short_description: "Test papers as bounded setup changes"
+  default_prompt: "Use $adopt-research-into-setup to turn this paper into a controlled local experiment."

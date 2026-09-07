@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-label="DWIN Research Adoption">
+  <defs>
+    <linearGradient id="bg" x1="128" y1="96" x2="896" y2="928" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1D4ED8"/>
+      <stop offset="1" stop-color="#0F766E"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="1024" rx="224" fill="#07111F"/>
+  <circle cx="512" cy="512" r="344" fill="none" stroke="url(#bg)" stroke-width="72"/>
+  <path d="M302 616V408h126c128 0 206 78 206 208H526c0-68-32-106-98-106h-18v106H302Zm332 0V408h108v208H634Z" fill="#F8FAFC"/>
+  <circle cx="290" cy="334" r="38" fill="#60A5FA"/>
+  <circle cx="734" cy="302" r="38" fill="#2DD4BF"/>
+  <circle cx="766" cy="706" r="38" fill="#93C5FD"/>
+  <path d="m318 348 150 90m226-112-122 112m158 232-132-88" stroke="#CBD5E1" stroke-width="18" stroke-linecap="round" opacity=".75"/>
+</svg>

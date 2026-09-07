@@ -1,0 +1,19 @@
+{
+  "schema_version": "dwin.retrieval-arms-protocol/v1",
+  "purpose": "Diagnostic regression experiment, not independent validation or SciClaimSeekers reproduction",
+  "cases": "hybrid-cases.json",
+  "cases_sha256": "373edcf007d7e8f0867bd2aae8578006efe38bca27677fcfd2760524e5399360",
+  "labels_status": "consumed-regression-only",
+  "human_reviewed": false,
+  "promotion_allowed": false,
+  "default_search": "bm25",
+  "candidate_depth": 20,
+  "top_k": 3,
+  "arms": ["bm25", "exact_dense", "existing_rrf", "union_dense_rescore"],
+  "candidate_recall_scope": "Each arm's bounded pre-final pool; existing_rrf pool is unchanged existing implementation top-20, not its entire prefusion union",
+  "rescore_method": "Same normalized dense cosine; NOT cross-encoder, NOT LLM reranking",
+  "expected_control": "union_dense_rescore top-k equals exact_dense top-k for k <= candidate_depth with common deterministic tie rules",
+  "latency_scope": "Cold and warm complete-four-arm candidate collection per query; cold means uncached query embedding with model already initialized during build, not cold process/model loading",
+  "promotion_requirements": ["Fresh independent human-reviewed relevance labels frozen before tuning", "Predeclared quality and latency gates", "Citation and offline-integrity checks", "Explicit operator review"],
+  "frozen_comparisons": ["candidate recall", "final recall@3", "MRR@3", "language", "query kind", "previous split relabeled regression", "query embedding cache work", "cold-query versus warm-query latency"]
+}

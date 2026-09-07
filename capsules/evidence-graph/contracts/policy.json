@@ -1,0 +1,20 @@
+{
+  "schema_version": "dwin.evidence-policy/v1",
+  "extensions": [".md", ".txt"],
+  "max_roots": 8,
+  "max_files": 256,
+  "max_file_bytes": 2097152,
+  "max_total_bytes": 33554432,
+  "max_depth": 8,
+  "chunk_characters": 2400,
+  "cache_ttl_seconds": 3600,
+  "cache_max_entries": 256,
+  "cache_max_bytes": 8388608,
+  "authority": "candidate-only",
+  "instruction_authority": "none",
+  "privacy": "local-private-no-export",
+  "network": false,
+  "semantic_answer_cache": false,
+  "live_freshness": "reopen-and-verify",
+  "retention": "current snapshot only; old packet cache invalidated on generation change"
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "dwin.capsule/v1",
+  "id": "evidence-graph",
+  "version": "0.4.0",
+  "description": "Retrieve registered evidence, compare local retrieval arms, and validate candidate adoption records against source spans and execution artifacts without claiming scientific verification.",
+  "capabilities": { "network": false, "read_scopes": ["registered-documents"], "write_scope": "factory-data" },
+  "jobs": [
+    { "id": "index", "script": "jobs/index.mjs", "timeout_seconds": 120, "schedule": "manual" },
+    { "id": "embed", "script": "jobs/embed.mjs", "timeout_seconds": 300, "schedule": "manual" },
+    { "id": "validate-adoptions", "script": "jobs/validate-adoptions.mjs", "timeout_seconds": 30, "schedule": "manual" },
+    { "id": "evaluate-retrieval-arms", "script": "jobs/evaluate-retrieval-arms.mjs", "timeout_seconds": 300, "schedule": "manual" }
+  ],
+  "evaluators": [{ "id": "evidence-integrity", "script": "evals/integrity.mjs", "timeout_seconds": 30 }]
+}

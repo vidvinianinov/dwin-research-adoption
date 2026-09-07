@@ -1,0 +1,21 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.dvinianinov/dwin-research-adoption",
+  "title": "DWIN Research Adoption",
+  "description": "Find, ground, evaluate, and selectively retain AI research through one local-first MCP.",
+  "repository": {
+    "url": "https://github.com/dvinianinov/dwin-research-adoption",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "dwin-research-adoption",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

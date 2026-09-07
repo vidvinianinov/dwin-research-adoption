@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://dwin.local/contracts/research-evidence-bundle.schema.json",
+  "title": "Research evidence bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "paper_id", "content_trust", "instruction_authority", "metadata", "abstract", "relevance", "human_review", "claims", "limitations"],
+  "properties": {
+    "schema_version": { "const": "dwin.research-evidence/v1" },
+    "paper_id": { "type": "string", "minLength": 1 },
+    "content_trust": { "const": "untrusted-external" },
+    "instruction_authority": { "const": "none" },
+    "metadata": { "type": "object" },
+    "abstract": { "type": "string", "maxLength": 8000 },
+    "relevance": { "type": "array" },
+    "human_review": { "type": "object" },
+    "claims": { "type": "array" },
+    "limitations": { "type": "array", "items": { "type": "string" } }
+  }
+}

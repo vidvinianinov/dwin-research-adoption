@@ -1,0 +1,15 @@
+{
+  "schema_version": "dwin.research-known-item-regression/v1",
+  "method": "Post-hoc seeded regression; not a held-out recall claim",
+  "cases": [
+    { "template_id": "sqlite-retrieval", "expected_arxiv_id": "2608.24060", "observed_rank_2026_08_31": 1 },
+    { "template_id": "dense-vector-indexing", "expected_arxiv_id": "2608.22980", "observed_rank_2026_08_31": 1 },
+    { "template_id": "governed-memory", "expected_arxiv_id": "2608.08253", "observed_rank_2026_08_31": 1 },
+    { "template_id": "hybrid-retrieval-reranking", "expected_arxiv_id": "2607.24803", "observed_rank_2026_08_31": 1 }
+  ],
+  "limitations": [
+    "Cases were selected after the papers were supplied.",
+    "A stored historic rank does not guarantee future arXiv ranking or broad relevance recall.",
+    "Fresh independently judged relevant and irrelevant papers are required before a quality claim."
+  ]
+}

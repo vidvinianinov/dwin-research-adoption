@@ -1,0 +1,12 @@
+import assert from "node:assert/strict";
+import { mkdtempSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import test from "node:test";
+const root = new URL("..", import.meta.url).pathname.replace(/\/$/, ""), data = mkdtempSync(join(tmpdir(), "dwin-memory-test-")); process.env.DWIN_FACTORY_ROOT = root; process.env.DWIN_FACTORY_DATA = data;
+const { MemoryStore } = await import("../capsules/memory-graph/lib/store.mjs");
+const sourceValidator = id => ({ adoption_record_id: id, protocol_hash: "1".repeat(64), result_run_id: "run_test", source_spans_checked: 1, paper: "2608.24188v1" });
+const record = { schema_version: "dwin.memory-candidate/v1", claim: "Use bounded context compression only after the task-family holdout gate passes.", claim_type: "workflow-rule", scope: "coding-agent-context", confidence: 0.8, valid_until: "2030-01-01T00:00:00.000Z", adoption_record_id: "a".repeat(64), rationale: "The referenced experiment passed its declared gate.", tags: ["context", "evaluation"] };
+test("keeps proposals out of retrieval until explicit approval", () => { const store = new MemoryStore({ data, sourceValidator }); try { const proposed = store.propose(record); assert.equal(store.status().active_claims, 0); assert.equal(store.search({ query: "compression" }).results.length, 0); const promoted = store.promote({ candidate_id: proposed.candidate_id, approved: true, approval_actor: "test-human", approval_note: "Reviewed fixture evidence", supersedes_claim_id: null }); assert.ok(promoted.claim_id); assert.equal(store.search({ query: "compression" }).results.length, 1); assert.equal(store.validate().passed, true); } finally { store.close(); } });
+test("rejects expired candidates", () => { const store = new MemoryStore({ data: join(data, "expired"), sourceValidator }); try { assert.throws(() => store.propose({ ...record, valid_until: "2020-01-01T00:00:00.000Z" }), /EXPIRY/); } finally { store.close(); } });
+test("requires an accepted source validator", () => { const store = new MemoryStore({ data: join(data, "source"), sourceValidator: () => { throw new Error("MEMORY_ACCEPTED_EXPERIMENT_REQUIRED"); } }); try { assert.throws(() => store.propose(record), /ACCEPTED_EXPERIMENT/); } finally { store.close(); } });

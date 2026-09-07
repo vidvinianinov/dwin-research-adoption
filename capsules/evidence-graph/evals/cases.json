@@ -1,0 +1,22 @@
+{
+  "schema_version": "dwin.evidence-cache-eval/v1",
+  "frozen_before_implementation": true,
+  "baseline": "exact same retrieval policy and snapshot, cache bypassed",
+  "treatment": "generation-bound exact cache, optional caller-known packet acknowledgement",
+  "requirements": [
+    {"id":"retrieval-equivalence","critical":true,"rule":"Hit and bypass return identical packet hashes and ordered chunk IDs."},
+    {"id":"locator-integrity","critical":true,"rule":"Every chunk reopens to exact UTF-8 bytes and matching source and content SHA-256."},
+    {"id":"invalidation","critical":true,"rule":"Same-size source edits, changed query/filter/limits/context/policy, expiry and removed sources do not reuse an incompatible packet."},
+    {"id":"authority","critical":true,"rule":"Only DERIVED_FROM, MENTIONS and REFERENCES edges; no automatic approval, claim merge, resolution or truth promotion."},
+    {"id":"privacy","critical":true,"rule":"No network; symlink/root escape rejected; registered source text never enters packaged evidence fixtures."},
+    {"id":"explicit-reuse","critical":true,"rule":"NOT_MODIFIED only with an exact caller-known packet hash in a matching context and a valid cache hit; otherwise content is delivered."},
+    {"id":"efficiency","critical":false,"rule":"Measure retrieval executions and serialized response bytes over identical requests. Do not call these measured LLM token or dollar savings."}
+  ],
+  "queries": [
+    {"query":"generation cache","expected":"cache.md"},
+    {"query":"human approval","expected":"authority.md"},
+    {"query":"VECTOR_UNAVAILABLE","expected":"retrieval.md"}
+  ],
+  "holdout": "Unicode exact locators, changed same-length bytes and cross-context acknowledgement",
+  "limits": "Small deterministic engineering benchmark; not a sealed independent scientific holdout or a model-quality benchmark."
+}

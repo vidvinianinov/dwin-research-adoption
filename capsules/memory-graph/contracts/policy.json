@@ -1,0 +1,15 @@
+{
+  "schema_version": "dwin.memory-policy/v1",
+  "max_candidates": 1000,
+  "max_claims": 500,
+  "max_claim_characters": 1200,
+  "max_search_results": 20,
+  "allowed_claim_types": ["setup-fact", "workflow-rule", "evaluated-lesson", "constraint"],
+  "source_gate": "current-adoption-record-with-accepted-experiment",
+  "promotion_gate": "explicit-human-approval",
+  "expiry_required": true,
+  "append_only": true,
+  "privacy": "local-private-no-export",
+  "authority": "approved-local-memory",
+  "instruction_authority": "none"
+}

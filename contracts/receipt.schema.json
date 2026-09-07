@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://dwin.local/contracts/receipt.schema.json",
+  "title": "DWIN Factory run receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "run_id", "capsule_id", "capsule_version", "job_id", "trigger", "status", "started_at", "finished_at", "source_hash", "artifacts", "evaluations", "policy"],
+  "properties": {
+    "schema_version": { "const": "dwin.run-receipt/v1" },
+    "run_id": { "type": "string" },
+    "capsule_id": { "type": "string" },
+    "capsule_version": { "type": "string" },
+    "job_id": { "type": "string" },
+    "trigger": { "type": "string" },
+    "status": { "enum": ["ACCEPTED", "REJECTED", "ERROR"] },
+    "started_at": { "type": "string" },
+    "finished_at": { "type": "string" },
+    "source_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "artifacts": { "type": "array", "items": { "type": "object" } },
+    "evaluations": { "type": "array", "items": { "type": "object" } },
+    "policy": { "type": "object" }
+  }
+}

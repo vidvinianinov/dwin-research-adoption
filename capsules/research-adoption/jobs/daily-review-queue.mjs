@@ -1,0 +1,14 @@
+import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
+import { RadarStore } from "../../research-radar/lib/db.mjs";
+import { buildPilotAudit } from "../lib/adoption.mjs";
+import { CORPUS, DATA, POLICY, verifyCorpus } from "../lib/corpus.mjs";
+import { PROMPT_VERSION } from "../lib/local-extraction.mjs";
+if (!process.env.DWIN_RUN_OUTPUT) throw new Error("DWIN_RUN_OUTPUT required");
+const corpus = verifyCorpus(), audit = buildPilotAudit(), cacheRoot = join(DATA, "local-candidate-cache"), caches = [];
+if (existsSync(cacheRoot)) for (const name of readdirSync(cacheRoot).filter(item => item.endsWith(".json")).slice(0, 100)) { try { const item = JSON.parse(readFileSync(join(cacheRoot, name), "utf8")); if (item.prompt_version === PROMPT_VERSION && CORPUS.papers.some(paper => paper.version_id === item.paper?.version_id)) caches.push(item); } catch {} }
+const byPaper = CORPUS.papers.map(paper => { const item = caches.find(candidate => candidate.paper?.version_id === paper.version_id); return { version_id: paper.version_id, extracted: Boolean(item), candidates: item?.candidates?.length || 0, cache_key: item?.cache_key || null }; });
+const radar = new RadarStore(); let queue; try { queue = radar.queue({ limit: 5 }).map(item => ({ id: item.id, version_id: item.version_id, title: item.title, categories: item.categories, published_at: item.published_at, best_score: item.best_score, review_status: item.review_status, content_trust: "untrusted-external" })); } finally { radar.close(); }
+const report = { schema_version: "dwin.research-adoption-daily/v1", generated_at: new Date().toISOString(), corpus: { id: CORPUS.corpus_id, ready: corpus.ready, parser_gate_passed: audit.gate_passed, expected_papers: POLICY.max_papers, indexed_papers: audit.aggregate.indexed }, local_extraction: { prompt_version: PROMPT_VERSION, papers_complete: byPaper.filter(item => item.extracted).length, candidate_count: byPaper.reduce((sum, item) => sum + item.candidates, 0), by_paper: byPaper }, research_review_queue: queue, next_actions: [...(!audit.gate_passed ? ["repair-pilot-parser-gate"] : []), ...(byPaper.some(item => !item.extracted) ? ["continue-bounded-local-extraction"] : []), "human-review-candidates-and-design-experiments"], automatic_inference: false, automatic_memory_promotion: false, network_requests: 0, privacy: POLICY.privacy, authority: POLICY.authority, instruction_authority: POLICY.instruction_authority };
+writeFileSync(join(process.env.DWIN_RUN_OUTPUT, "research-adoption-daily.json"), `${JSON.stringify(report, null, 2)}\n`, { mode: 0o600 });
+process.stdout.write(`${JSON.stringify({ corpus_ready: report.corpus.ready, extraction_coverage: `${report.local_extraction.papers_complete}/${POLICY.max_papers}`, review_candidates: queue.length })}\n`);

@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://dwin.local/contracts/research-retrieval-eval.schema.json",
+  "title": "DWIN arXiv template retrieval evaluation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "evaluated_at", "source", "cases", "summary", "limitations"],
+  "properties": {
+    "schema_version": { "const": "dwin.research-retrieval-eval/v1" },
+    "evaluated_at": { "type": "string", "format": "date-time" },
+    "source": { "const": "arxiv-api" },
+    "cases": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["case_id", "expected_arxiv_id", "template_id", "found", "rank", "returned", "first_call", "second_call"],
+        "properties": {
+          "case_id": { "type": "string" },
+          "expected_arxiv_id": { "type": "string" },
+          "template_id": { "type": "string" },
+          "found": { "type": "boolean" },
+          "rank": { "type": ["integer", "null"], "minimum": 1 },
+          "returned": { "type": "integer", "minimum": 0, "maximum": 200 },
+          "first_call": { "type": "object" },
+          "second_call": { "type": "object" }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["critical_pass", "recall_at_page", "cache_hit_rate_on_repeat"],
+      "properties": {
+        "critical_pass": { "type": "boolean" },
+        "recall_at_page": { "type": "number", "minimum": 0, "maximum": 1 },
+        "cache_hit_rate_on_repeat": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "limitations": { "type": "array", "items": { "type": "string" } }
+  }
+}

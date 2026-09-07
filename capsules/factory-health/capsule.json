@@ -1,0 +1,25 @@
+{
+  "schema_version": "dwin.capsule/v1",
+  "id": "factory-health",
+  "version": "0.1.0",
+  "description": "Verify the local factory contracts, policy, capsule inventory, runtime, and writable data path.",
+  "capabilities": {
+    "network": false,
+    "write_scope": "run-output-only"
+  },
+  "jobs": [
+    {
+      "id": "daily-health",
+      "script": "jobs/daily-health.mjs",
+      "timeout_seconds": 30,
+      "schedule": "daily"
+    }
+  ],
+  "evaluators": [
+    {
+      "id": "health-artifact",
+      "script": "evals/health-artifact.mjs",
+      "timeout_seconds": 15
+    }
+  ]
+}

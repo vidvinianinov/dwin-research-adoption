@@ -1,0 +1,38 @@
+{
+  "schema_version": "dwin.capsule/v1",
+  "id": "research-radar",
+  "version": "0.5.0",
+  "description": "Route AI research problems into audited arXiv templates, browse a governed category catalog through a local-first cache, and maintain a private review queue with empirical retrieval evidence and human-controlled decisions.",
+  "capabilities": {
+    "network": true,
+    "allowed_domains": ["export.arxiv.org"],
+    "write_scope": "factory-data"
+  },
+  "jobs": [
+    {
+      "id": "daily-sync",
+      "script": "jobs/daily-sync.mjs",
+      "timeout_seconds": 120,
+      "schedule": "daily"
+    },
+    {
+      "id": "backfill",
+      "script": "jobs/backfill.mjs",
+      "timeout_seconds": 120,
+      "schedule": "manual"
+    },
+    {
+      "id": "revisions",
+      "script": "jobs/revisions.mjs",
+      "timeout_seconds": 120,
+      "schedule": "manual"
+    }
+  ],
+  "evaluators": [
+    {
+      "id": "radar-integrity",
+      "script": "evals/radar-integrity.mjs",
+      "timeout_seconds": 30
+    }
+  ]
+}

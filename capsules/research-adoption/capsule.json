@@ -1,0 +1,22 @@
+{
+  "schema_version": "dwin.capsule/v1",
+  "id": "research-adoption",
+  "version": "0.1.0",
+  "description": "Pin research PDFs, audit local extraction, propose source-bound graph candidates, and run opt-in local claim-extraction experiments without promoting Memory.",
+  "capabilities": {
+    "network": true,
+    "allowed_domains": ["arxiv.org", "127.0.0.1"],
+    "read_scopes": ["registered-documents"],
+    "write_scope": "factory-data"
+  },
+  "jobs": [
+    { "id": "daily-review-queue", "script": "jobs/daily-review-queue.mjs", "timeout_seconds": 60, "schedule": "daily" },
+    { "id": "sync-pilot-corpus", "script": "jobs/sync-pilot-corpus.mjs", "timeout_seconds": 180, "schedule": "manual" },
+    { "id": "audit-pilot-corpus", "script": "jobs/audit-pilot-corpus.mjs", "timeout_seconds": 60, "schedule": "manual" },
+    { "id": "build-candidate-graph", "script": "jobs/build-candidate-graph.mjs", "timeout_seconds": 60, "schedule": "manual" },
+    { "id": "extract-local-candidates", "script": "jobs/extract-local-candidates.mjs", "timeout_seconds": 180, "schedule": "manual" }
+  ],
+  "evaluators": [
+    { "id": "research-adoption-integrity", "script": "evals/integrity.mjs", "timeout_seconds": 60 }
+  ]
+}

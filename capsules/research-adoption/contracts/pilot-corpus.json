@@ -1,0 +1,41 @@
+{
+  "schema_version": "dwin.research-corpus/v1",
+  "corpus_id": "ai-native-pilot-v1",
+  "papers": [
+    {
+      "id": "2608.24188",
+      "version_id": "2608.24188v1",
+      "version_key": "bab9613397c60b7404910a0652c21fb3e0b6edd7f0a95ec44572c74dac9f643d",
+      "title": "Paritok-4B: Intent-Conditioned Context Compression for Coding Agents",
+      "dimensions": ["context-efficiency", "coding-agents", "token-economics"]
+    },
+    {
+      "id": "2608.08253",
+      "version_id": "2608.08253v2",
+      "version_key": "90510d8c0626791e4ffcd8d69702ae4cea976521ae1f9c7813414580cce90f00",
+      "title": "SuperLocalMemory 4.0: The Governed Memory Operating System for AI Agents",
+      "dimensions": ["agent-memory", "governance", "provenance"]
+    },
+    {
+      "id": "2608.24060",
+      "version_id": "2608.24060v1",
+      "version_key": "c7ea10d7997e89d57c62cda452f3cadf55682ab36c12464068dd8b55db52fd0f",
+      "title": "SQLite is Enough. Lexical, Semantic, and Hybrid Search with scrydb",
+      "dimensions": ["hybrid-retrieval", "sqlite", "local-first"]
+    },
+    {
+      "id": "2608.22980",
+      "version_id": "2608.22980v1",
+      "version_key": "a65379efc3203afcc0289542b41949fc6705eed556535e890a2dac60729c30fb",
+      "title": "Hypergraph Embedding Indexing for Efficient Dense Vector Retrieval",
+      "dimensions": ["dense-retrieval", "hypergraph", "indexing"]
+    },
+    {
+      "id": "2607.24803",
+      "version_id": "2607.24803v1",
+      "version_key": "5979679c630254a427f3f69fe3296f02ee1d32c122fe595620cfa73ee43ccb1c",
+      "title": "SciClaimSeekers at CheckThat! 2026: Retrieving Scientific Sources for Social Media Claims with LLM Reranking",
+      "dimensions": ["claim-retrieval", "reranking", "social-publishing"]
+    }
+  ]
+}

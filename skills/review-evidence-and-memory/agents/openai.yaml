@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Evidence and Memory"
+  short_description: "Approve only grounded durable lessons"
+  default_prompt: "Use $review-evidence-and-memory to audit this result before it becomes durable memory."
