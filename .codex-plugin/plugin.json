@@ -4,10 +4,10 @@
   "description": "Evidence-first workflows for turning AI research into measured, human-approved setup changes.",
   "author": {
     "name": "Vitalii Dvinianinov",
-    "url": "https://github.com/dvinianinov"
+    "url": "https://github.com/vidvinianinov"
   },
-  "homepage": "https://github.com/dvinianinov/dwin-research-adoption",
-  "repository": "https://github.com/dvinianinov/dwin-research-adoption",
+  "homepage": "https://github.com/vidvinianinov/dwin-research-adoption",
+  "repository": "https://github.com/vidvinianinov/dwin-research-adoption",
   "license": "Apache-2.0",
   "keywords": ["research", "arxiv", "evaluation", "memory", "mcp"],
   "skills": "./skills/",
@@ -18,9 +18,9 @@
     "developerName": "Vitalii Dvinianinov",
     "category": "Productivity",
     "capabilities": ["Research", "Evaluation", "Memory"],
-    "websiteURL": "https://github.com/dvinianinov/dwin-research-adoption",
-    "privacyPolicyURL": "https://github.com/dvinianinov/dwin-research-adoption/blob/main/docs/privacy.md",
-    "termsOfServiceURL": "https://github.com/dvinianinov/dwin-research-adoption/blob/main/docs/terms.md",
+    "websiteURL": "https://github.com/vidvinianinov/dwin-research-adoption",
+    "privacyPolicyURL": "https://github.com/vidvinianinov/dwin-research-adoption/blob/main/docs/privacy.md",
+    "termsOfServiceURL": "https://github.com/vidvinianinov/dwin-research-adoption/blob/main/docs/terms.md",
     "defaultPrompt": [
       "Find recent AI research for this problem.",
       "Turn this paper into a controlled experiment.",

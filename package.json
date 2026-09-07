@@ -5,15 +5,15 @@
   "type": "module",
   "license": "Apache-2.0",
   "author": "Vitalii Dvinianinov",
-  "homepage": "https://github.com/dvinianinov/dwin-research-adoption#readme",
+  "homepage": "https://github.com/vidvinianinov/dwin-research-adoption#readme",
   "bugs": {
-    "url": "https://github.com/dvinianinov/dwin-research-adoption/issues"
+    "url": "https://github.com/vidvinianinov/dwin-research-adoption/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dvinianinov/dwin-research-adoption.git"
+    "url": "git+https://github.com/vidvinianinov/dwin-research-adoption.git"
   },
-  "mcpName": "io.github.dvinianinov/dwin-research-adoption",
+  "mcpName": "io.github.vidvinianinov/dwin-research-adoption",
   "bin": {
     "dwin-research-adoption": "bin/dwin-research-adoption.mjs"
   },

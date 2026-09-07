@@ -42,7 +42,7 @@ The default `basic` profile exposes the end-to-end workflow without diagnostic t
 After the GitHub release:
 
 ```bash
-npx skills add dvinianinov/dwin-research-adoption
+npx skills add vidvinianinov/dwin-research-adoption
 ```
 
 Included skills:
@@ -71,4 +71,4 @@ The local stdio package is Apache-2.0. A future hosted service may add managed s
 
 See [SECURITY.md](SECURITY.md), [Privacy](docs/privacy.md), and [Terms](docs/terms.md). Report vulnerabilities privately rather than opening a public issue.
 
-MCP Registry name: `io.github.dvinianinov/dwin-research-adoption`
+MCP Registry name: `io.github.vidvinianinov/dwin-research-adoption`

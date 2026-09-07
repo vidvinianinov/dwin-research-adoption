@@ -2,9 +2,9 @@
   "schema_version": "dwin.release-receipt/v1",
   "package": "dwin-research-adoption",
   "version": "0.1.0",
-  "generated_at": "2026-09-07T00:17:16.356Z",
-  "source_tree_sha256": "dd39ac6f2de1030c8277d8de3aa3c6ef0b9ddd329c19bba57a6772518a0607a6",
-  "source_files": 133,
+  "generated_at": "2026-09-07T19:31:53.507Z",
+  "source_tree_sha256": "c8a080aa126af0a79d9661be1f369a67d5bde4d2a130fd2539b47c89265d44de",
+  "source_files": 135,
   "gates": {
     "capsule_validation": "PASS",
     "unit_tests": "PASS",
