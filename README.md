@@ -14,11 +14,11 @@ The MCP combines six bounded capsules: Research Radar, Document Intelligence, Ev
 
 ## Install the MCP
 
-After the npm release:
-
 ```bash
 npx -y dwin-research-adoption@0.1.0
 ```
+
+Published package: [dwin-research-adoption on npm](https://www.npmjs.com/package/dwin-research-adoption). Official Registry identity: `io.github.vidvinianinov/dwin-research-adoption`.
 
 Generic MCP client configuration:
 
@@ -39,11 +39,11 @@ The default `basic` profile exposes the end-to-end workflow without diagnostic t
 
 ## Install the skills
 
-After the GitHub release:
-
 ```bash
 npx skills add vidvinianinov/dwin-research-adoption
 ```
+
+Release: [v0.1.0](https://github.com/vidvinianinov/dwin-research-adoption/releases/tag/v0.1.0). Skill catalog: [skills.sh/vidvinianinov/dwin-research-adoption](https://www.skills.sh/vidvinianinov/dwin-research-adoption).
 
 Included skills:
 

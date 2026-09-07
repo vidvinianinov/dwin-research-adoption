@@ -32,7 +32,7 @@ Exit criteria:
 
 ## G2 — Reproducible executable distribution
 
-**Status:** in progress
+**Status:** complete
 
 Depends on: G0
 
@@ -45,7 +45,7 @@ Exit criteria:
 
 ## G3 — Proof-quality launch artifact
 
-**Status:** queued
+**Status:** in progress
 
 Depends on: G1 and G2
 
@@ -55,6 +55,12 @@ Exit criteria:
 - the demo command and fixture work from a clean environment;
 - a tagged GitHub release links the package, receipt, demo, limitations, and rollback instructions;
 - at least one negative or unchanged evaluation outcome is shown alongside positive behavior.
+
+Current evidence:
+
+- tagged release `v0.1.0`, npm distribution, Registry metadata, and clean-install demo are live;
+- the current demo proves discovery, deterministic routing, and no silent durable mutation;
+- evidence recovery, a setup-gap candidate, and an explicit negative or unchanged adoption evaluation remain to be added before G3 is complete.
 
 ## G4 — External activation evidence
 
