@@ -59,8 +59,9 @@ Exit criteria:
 Current evidence:
 
 - tagged release `v0.1.0`, npm distribution, Registry metadata, and clean-install demo are live;
-- the current demo proves discovery, deterministic routing, and no silent durable mutation;
-- evidence recovery, a setup-gap candidate, and an explicit negative or unchanged adoption evaluation remain to be added before G3 is complete.
+- the `0.2.0` implementation adds exact setup evidence recovery, typed setup-gap candidates, optional hybrid indexing, and a reproducible negative/deferred adoption evaluation;
+- the local launch case found three gaps and proved that a deferred record cannot create a Memory candidate;
+- G3 remains open until `0.2.0` passes clean-package verification and is tagged, published, and linked from its GitHub release.
 
 ## G4 — External activation evidence
 

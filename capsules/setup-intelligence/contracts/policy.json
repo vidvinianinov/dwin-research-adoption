@@ -1,0 +1,19 @@
+{
+  "schema_version": "dwin.setup-policy/v1",
+  "max_roots": 8,
+  "max_files": 256,
+  "max_file_bytes": 524288,
+  "max_total_bytes": 33554432,
+  "max_depth": 10,
+  "chunk_characters": 2400,
+  "max_search_results": 20,
+  "max_preview_characters": 1200,
+  "extensions": [".md", ".txt", ".json", ".yaml", ".yml", ".toml", ".mjs", ".js", ".ts", ".py"],
+  "excluded_directories": [".git", ".venv", "build", "coverage", "dist", "node_modules", "vendor"],
+  "privacy": "local-private-no-export",
+  "authority": "candidate-only",
+  "instruction_authority": "none",
+  "network": false,
+  "semantic_role": "candidate-recall-only",
+  "live_freshness": "reopen-and-verify"
+}

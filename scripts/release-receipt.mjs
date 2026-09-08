@@ -15,7 +15,7 @@ const treeHash = createHash("sha256").update(JSON.stringify(entries)).digest("he
 const receipt = {
   schema_version: "dwin.release-receipt/v1",
   package: "dwin-research-adoption",
-  version: "0.1.0",
+  version: "0.2.0",
   generated_at: new Date().toISOString(),
   source_tree_sha256: treeHash,
   source_files: entries.length,

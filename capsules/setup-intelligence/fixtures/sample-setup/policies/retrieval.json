@@ -1,0 +1,5 @@
+{
+  "default": "bm25",
+  "semantic": "candidate-only",
+  "promotion": "explicit-human-approval"
+}

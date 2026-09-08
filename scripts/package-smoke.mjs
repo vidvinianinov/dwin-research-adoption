@@ -25,7 +25,7 @@ try {
   const bin = join(sandbox, "node_modules", ".bin", "dwin-research-adoption");
   const doctor = JSON.parse(run(bin, ["doctor"]));
   assert.equal(doctor.valid, true);
-  assert.equal(doctor.capsules, 6);
+  assert.equal(doctor.capsules, 7);
   const data = join(sandbox, "data");
   const client = new Client({ name: "dwin-packed-smoke", version: "0.1.0" }, { capabilities: {} });
   let serverError = "";
@@ -35,7 +35,7 @@ try {
     await client.connect(transport);
     transport.stderr?.on("data", chunk => { serverError += chunk.toString(); });
     const tools = await client.listTools();
-    assert.equal(tools.tools.length, 27);
+    assert.equal(tools.tools.length, 38);
     const memory = await client.callTool({ name: "memory_status", arguments: {} });
     assert.equal(memory.structuredContent.promotion_gate, "explicit-human-approval");
   } catch (error) {
@@ -43,7 +43,7 @@ try {
   } finally {
     await client.close();
   }
-  process.stdout.write(`${JSON.stringify({ passed: true, archive: basename(archive), packed_files: packed.entryCount, packed_bytes: packed.size, tools: 27 })}\n`);
+  process.stdout.write(`${JSON.stringify({ passed: true, archive: basename(archive), packed_files: packed.entryCount, packed_bytes: packed.size, tools: 38 })}\n`);
 } finally {
   if (archive) rmSync(archive, { force: true });
   rmSync(sandbox, { recursive: true, force: true });

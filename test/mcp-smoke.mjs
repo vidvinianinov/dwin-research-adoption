@@ -12,9 +12,9 @@ const client = new Client({ name: "dwin-smoke", version: "0.1.0" }, { capabiliti
 try {
   await client.connect(new StdioClientTransport({ command: process.execPath, args: [join(root, "bin", "dwin-research-adoption.mjs")], env: { ...process.env, DWIN_FACTORY_ROOT: root, DWIN_FACTORY_DATA: data }, stderr: "pipe" }));
   const listed = await client.listTools();
-  assert.equal(listed.tools.length, 27);
+  assert.equal(listed.tools.length, 38);
   const names = new Set(listed.tools.map(tool => tool.name));
-  for (const name of ["factory_validate", "radar_search_template", "document_reopen", "evidence_adoption_graph", "research_adoption_status", "memory_promote"]) assert.ok(names.has(name), name);
+  for (const name of ["factory_validate", "radar_search_template", "document_reopen", "evidence_search_hybrid", "setup_reconcile", "setup_bridge_evidence", "setup_evaluate_reconciliation", "evidence_adoption_graph", "research_adoption_status", "memory_promote"]) assert.ok(names.has(name), name);
   for (const tool of listed.tools) {
     assert.ok(tool.description?.length > 20, `${tool.name} description`);
     assert.equal(typeof tool.annotations?.readOnlyHint, "boolean", `${tool.name} readOnlyHint`);

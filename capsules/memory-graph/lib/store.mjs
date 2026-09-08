@@ -18,10 +18,15 @@ const promotion = z.object({ candidate_id: hash, approved: z.literal(true), appr
 const searchInput = z.object({ query: z.string().trim().min(2).max(300), limit: z.number().int().min(1).max(POLICY.max_search_results).default(5), include_expired: z.boolean().default(false) }).strict();
 
 function privateDir(path) { mkdirSync(path, { recursive: true, mode: 0o700 }); }
+export function assertPromotableAdoption(record, validation) {
+  if (record.decision !== "proposed") throw new Error("MEMORY_ADOPTION_DECISION_NOT_PROPOSED");
+  if (validation.result_status !== "ACCEPTED" || !record.result) throw new Error("MEMORY_ACCEPTED_EXPERIMENT_REQUIRED");
+  return true;
+}
 function defaultSourceValidator(recordId) {
   const listed = listAdoptions({ record_id: recordId, limit: 1 }); if (listed.total !== 1) throw new Error("MEMORY_ADOPTION_RECORD_NOT_FOUND");
   const evidence = new EvidenceStore();
-  try { const validation = validateAdoption(listed.records[0].record, evidence); if (validation.result_status !== "ACCEPTED" || !listed.records[0].record.result) throw new Error("MEMORY_ACCEPTED_EXPERIMENT_REQUIRED"); return { adoption_record_id: recordId, protocol_hash: validation.protocol_hash, result_run_id: listed.records[0].record.result.run_id, source_spans_checked: validation.source_spans_checked, paper: `${listed.records[0].record.paper.id}v${listed.records[0].record.paper.version}` }; } finally { evidence.close(); }
+  try { const record = listed.records[0].record, validation = validateAdoption(record, evidence); assertPromotableAdoption(record, validation); return { adoption_record_id: recordId, protocol_hash: validation.protocol_hash, result_run_id: record.result.run_id, source_spans_checked: validation.source_spans_checked, paper: `${record.paper.id}v${record.paper.version}` }; } finally { evidence.close(); }
 }
 
 export class MemoryStore {

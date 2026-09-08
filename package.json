@@ -1,6 +1,6 @@
 {
   "name": "dwin-research-adoption",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Local-first MCP and skills for finding, grounding, evaluating, and adopting AI research.",
   "type": "module",
   "license": "Apache-2.0",
@@ -29,6 +29,7 @@
     "contracts/",
     "docs/",
     "evidence/release-receipt.json",
+    "evidence/cases/",
     "marketplace-test-pack.json",
     "policies/",
     "scripts/",

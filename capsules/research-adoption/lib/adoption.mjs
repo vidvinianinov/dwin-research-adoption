@@ -12,6 +12,11 @@ const canonical = value => JSON.stringify(value, (_, item) => item && typeof ite
 const wordTokens = text => [...new Set(String(text).normalize("NFKC").toLowerCase().match(/[\p{L}\p{N}]{3,}/gu) || [])].filter(token => !new Set(["the", "and", "for", "with", "from", "into", "using"]).has(token));
 const ratio = (n, d) => d ? n / d : 0;
 
+export function dailyPilotStateHonest(report, policy = POLICY) {
+  if (report.corpus.ready) return report.corpus.parser_gate_passed && report.local_extraction.papers_complete === policy.max_papers;
+  return !report.corpus.parser_gate_passed && report.local_extraction.papers_complete < policy.max_papers && report.next_actions.includes("repair-pilot-parser-gate") && report.next_actions.includes("continue-bounded-local-extraction");
+}
+
 export function buildPilotAudit({ data = DATA } = {}) {
   const corpus = verifyCorpus(data), store = new DocumentStore();
   try {

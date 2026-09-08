@@ -7,3 +7,5 @@ An evidence-first local MCP and skill pack that converts a research signal into 
 - [Terms](terms.md)
 - [Support](support.md)
 - [Security](../SECURITY.md)
+- [Memory portability launch case](cases/memory-portability-2609-05339.md)
+- [First English and Russian launch posts](launch/first-posts.md)

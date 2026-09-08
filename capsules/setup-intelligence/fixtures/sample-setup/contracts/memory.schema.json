@@ -1,0 +1,4 @@
+{
+  "schema_version": "sample.memory/v1",
+  "required": ["claim", "source_hash", "confidence", "expires_at"]
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://dwin.local/contracts/setup-reconciliation-eval.schema.json",
+  "title": "DWIN setup reconciliation evaluation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "case_id", "paper", "setup_generation", "arms", "outcomes", "metrics", "passed", "boundaries"],
+  "properties": {
+    "schema_version": { "const": "dwin.setup-reconciliation-eval/v1" },
+    "case_id": { "type": "string" },
+    "paper": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version", "url", "content_trust"],
+      "properties": {
+        "id": { "type": "string" },
+        "version": { "type": "integer" },
+        "url": { "type": "string" },
+        "content_trust": { "const": "untrusted-external" }
+      }
+    },
+    "setup_generation": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "arms": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["baseline", "intervention"],
+      "properties": {
+        "baseline": { "const": "untyped-bm25-top5" },
+        "intervention": { "const": "typed-multi-indicator-reconciliation-v1" }
+      }
+    },
+    "outcomes": { "type": "array", "minItems": 1, "maxItems": 11 },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["capability_status_accuracy", "baseline_known_false_positives", "intervention_known_false_positives", "model_tokens", "tool_calls", "duration_ms"],
+      "properties": {
+        "capability_status_accuracy": { "type": "number", "minimum": 0, "maximum": 1 },
+        "baseline_known_false_positives": { "type": "integer", "minimum": 0 },
+        "intervention_known_false_positives": { "type": "integer", "minimum": 0 },
+        "model_tokens": { "type": ["integer", "null"], "minimum": 0 },
+        "tool_calls": { "type": "integer", "minimum": 1 },
+        "duration_ms": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "passed": { "type": "boolean" },
+    "boundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["paper_reproduced", "memory_changed", "setup_changed", "scientific_verification", "decision"],
+      "properties": {
+        "paper_reproduced": { "const": false },
+        "memory_changed": { "const": false },
+        "setup_changed": { "const": false },
+        "scientific_verification": { "const": false },
+        "decision": { "const": "deferred" }
+      }
+    }
+  }
+}

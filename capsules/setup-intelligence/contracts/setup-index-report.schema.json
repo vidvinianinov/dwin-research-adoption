@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://dwin.local/contracts/setup-index-report.schema.json",
+  "title": "DWIN AI-native setup index report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "generation", "changed", "source_bytes_read", "counts", "privacy", "authority", "instruction_authority"],
+  "properties": {
+    "schema_version": { "const": "dwin.setup-index-report/v1" },
+    "generation": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "changed": { "type": "boolean" },
+    "source_bytes_read": { "type": "integer", "minimum": 0 },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["components", "chunks", "nodes", "edges"],
+      "properties": {
+        "components": { "type": "integer", "minimum": 1 },
+        "chunks": { "type": "integer", "minimum": 1 },
+        "nodes": { "type": "integer", "minimum": 1 },
+        "edges": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "privacy": { "const": "local-private-no-export" },
+    "authority": { "const": "candidate-only" },
+    "instruction_authority": { "const": "none" }
+  }
+}

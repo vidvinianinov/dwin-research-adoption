@@ -1,6 +1,6 @@
 {
   "name": "dwin-research-adoption",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Evidence-first workflows for turning AI research into measured, human-approved setup changes.",
   "author": {
     "name": "Vitalii Dvinianinov",
@@ -17,7 +17,7 @@
     "longDescription": "Find relevant AI research, ground it in exact evidence, design a controlled local experiment, and retain only human-approved lessons.",
     "developerName": "Vitalii Dvinianinov",
     "category": "Productivity",
-    "capabilities": ["Research", "Evaluation", "Memory"],
+    "capabilities": ["Research", "Document Intelligence", "Setup Reconciliation", "Evaluation", "Memory"],
     "websiteURL": "https://github.com/vidvinianinov/dwin-research-adoption",
     "privacyPolicyURL": "https://github.com/vidvinianinov/dwin-research-adoption/blob/main/docs/privacy.md",
     "termsOfServiceURL": "https://github.com/vidvinianinov/dwin-research-adoption/blob/main/docs/terms.md",

@@ -9,15 +9,16 @@ import { runCapsule } from "./executor.mjs";
 import { validateAll } from "./manifests.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const childIds = ["research-radar", "document-intelligence", "evidence-graph", "research-adoption", "memory-graph"];
+const childIds = ["research-radar", "document-intelligence", "evidence-graph", "setup-intelligence", "research-adoption", "memory-graph"];
 const children = new Map();
 const toolOwners = new Map();
 const basicToolNames = new Set([
   "radar_route_problem", "radar_search_templates", "radar_compile_template", "radar_search_template",
   "radar_search_local", "radar_queue", "radar_get_paper", "radar_lookup_ids",
   "document_status", "document_sync", "document_search", "document_reopen",
-  "evidence_status", "evidence_sync", "evidence_search", "evidence_reopen",
+  "evidence_status", "evidence_sync", "evidence_search", "evidence_reopen", "evidence_embedding_status", "evidence_embed", "evidence_search_hybrid",
   "evidence_record_adoption", "evidence_adoption_graph", "research_adoption_status",
+  "setup_status", "setup_sync", "setup_search", "setup_reopen", "setup_graph", "setup_reconcile", "setup_bridge_evidence", "setup_evaluate_reconciliation",
   "memory_status", "memory_search", "memory_graph", "memory_propose", "memory_promote", "memory_validate"
 ]);
 const toolProfile = process.env.DWIN_TOOL_PROFILE === "full" ? "full" : "basic";
@@ -57,7 +58,7 @@ const localTools = [
 
 async function connectChildren() {
   await Promise.all(childIds.map(async id => {
-    const client = new Client({ name: `dwin-unified-${id}`, version: "0.1.0" }, { capabilities: {} });
+    const client = new Client({ name: `dwin-unified-${id}`, version: "0.2.0" }, { capabilities: {} });
     const transport = new StdioClientTransport({
       command: process.execPath,
       args: [join(root, "capsules", id, "mcp-server.mjs")],
@@ -76,7 +77,7 @@ async function connectChildren() {
 
 await connectChildren();
 
-const server = new Server({ name: "dwin-research-adoption", version: "0.1.0" }, { capabilities: { tools: {} } });
+const server = new Server({ name: "dwin-research-adoption", version: "0.2.0" }, { capabilities: { tools: {} } });
 
 server.setRequestHandler(ListToolsRequestSchema, async () => ({
   tools: [...localTools, ...childIds.flatMap(id => children.get(id).tools).filter(tool => toolProfile === "full" || basicToolNames.has(tool.name))]

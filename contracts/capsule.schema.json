@@ -19,7 +19,7 @@
         "allowed_domains": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
         "read_scopes": {
           "type": "array",
-          "items": { "enum": ["codex-sessions", "claude-sessions", "kiro-sessions", "registered-documents"] },
+          "items": { "enum": ["codex-sessions", "claude-sessions", "kiro-sessions", "registered-documents", "registered-setup"] },
           "uniqueItems": true
         },
         "write_scope": { "enum": ["run-output-only", "factory-data"] }

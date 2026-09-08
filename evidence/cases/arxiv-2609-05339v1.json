@@ -1,0 +1,58 @@
+{
+  "schema_version": "dwin.public-launch-case/v1",
+  "case_id": "arxiv-2609-05339v1-public-product",
+  "paper": {
+    "id": "2609.05339",
+    "version": 1,
+    "title": "Does Your Agent's Memory Survive a Model Upgrade? A Controlled Study of Memory Portability",
+    "abs_url": "https://arxiv.org/abs/2609.05339",
+    "pdf_sha256": "77b98a7d4597de14788b7c98a561925a936d8e39dd450d948eda36cf614e0b5f",
+    "content_trust": "untrusted-external"
+  },
+  "document_pipeline": {
+    "parser": "docling",
+    "parser_version": "2.126.0",
+    "pages": 18,
+    "blocks": 186,
+    "run_status": "ACCEPTED",
+    "integrity_checks": ["schema", "bounded", "integrity", "offline-no-authority", "private"]
+  },
+  "hybrid_index": {
+    "keyword": "fts5-bm25",
+    "embedding_model": "Xenova/multilingual-e5-small",
+    "embedding_revision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+    "dimensions": 384,
+    "vectors": 549,
+    "status": "READY",
+    "network_inference": false,
+    "authority": "candidate-only"
+  },
+  "reconciliation_evaluation": {
+    "baseline": "untyped-bm25-top5",
+    "intervention": "typed-multi-indicator-reconciliation-v1",
+    "capabilities_checked": 7,
+    "capability_status_accuracy": 1,
+    "baseline_known_false_positives": 22,
+    "intervention_known_false_positives": 0,
+    "observed_candidates": ["provenance", "embedding_identity", "fixed_schema_memory", "approval_gate"],
+    "gap_candidates": ["source_retention", "migration_evaluation", "token_measurement"],
+    "model_tokens": null,
+    "decision": "deferred",
+    "artifact_sha256": "afe7b327c9a7c352f921497774627e5e3d805cfa7608949d911e58cc7b8c2664"
+  },
+  "memory_gate": {
+    "attempt_result": "MEMORY_ADOPTION_DECISION_NOT_PROPOSED",
+    "candidates_before": 0,
+    "candidates_after": 0,
+    "claims_before": 0,
+    "claims_after": 0,
+    "unchanged": true
+  },
+  "boundaries": {
+    "paper_reproduced": false,
+    "scientific_verification": false,
+    "productivity_claim": false,
+    "token_savings_claim": false,
+    "personal_or_employer_data": false
+  }
+}

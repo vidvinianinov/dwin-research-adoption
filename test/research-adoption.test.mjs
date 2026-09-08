@@ -7,6 +7,7 @@ import test from "node:test";
 const root = new URL("..", import.meta.url).pathname.replace(/\/$/, ""), data = mkdtempSync(join(tmpdir(), "dwin-adoption-test-"));
 process.env.DWIN_FACTORY_ROOT = root; process.env.DWIN_FACTORY_DATA = data;
 const { CORPUS, fetchPinnedPdf, syncPilotCorpus, verifyCorpus } = await import("../capsules/research-adoption/lib/corpus.mjs");
+const { dailyPilotStateHonest } = await import("../capsules/research-adoption/lib/adoption.mjs");
 
 function pdfResponse(versionId) { return new Response(Buffer.from(`%PDF-1.4\n${versionId}\n%%EOF\n`), { status: 200, headers: { "content-type": "application/pdf" } }); }
 const radar = { paperVersion: key => { const paper = CORPUS.papers.find(item => item.version_key === key); return paper ? { ...paper } : null; } };
@@ -25,4 +26,12 @@ test("rejects redirects outside official arXiv PDF paths", async () => {
 
 test("rejects non-PDF response bodies", async () => {
   await assert.rejects(() => fetchPinnedPdf("2608.24188v1", { fetchImpl: async () => new Response("not a pdf", { status: 200 }) }), /PDF_MAGIC_INVALID/);
+});
+
+test("treats an unprovisioned optional pilot as honest action-required state", () => {
+  const idle = { corpus: { ready: false, parser_gate_passed: false }, local_extraction: { papers_complete: 0 }, next_actions: ["repair-pilot-parser-gate", "continue-bounded-local-extraction"] };
+  assert.equal(dailyPilotStateHonest(idle), true);
+  assert.equal(dailyPilotStateHonest({ ...idle, corpus: { ready: false, parser_gate_passed: true } }), false);
+  assert.equal(dailyPilotStateHonest({ ...idle, next_actions: [] }), false);
+  assert.equal(dailyPilotStateHonest({ corpus: { ready: true, parser_gate_passed: true }, local_extraction: { papers_complete: CORPUS.papers.length }, next_actions: [] }), true);
 });

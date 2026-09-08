@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { EvidenceStore } from "../../evidence-graph/lib/store.mjs";
-import { buildPilotAudit, canonical } from "../lib/adoption.mjs";
+import { buildPilotAudit, canonical, dailyPilotStateHonest } from "../lib/adoption.mjs";
 import { CORPUS, POLICY, sha, verifyCorpus } from "../lib/corpus.mjs";
 import { verifyLocalCandidateReport } from "../lib/local-extraction.mjs";
 
@@ -10,7 +10,7 @@ if (existsSync(join(root, "research-adoption-daily.json"))) {
   const report = JSON.parse(readFileSync(join(root, "research-adoption-daily.json"), "utf8"));
   checks = [
     { id: "daily-bounded", passed: report.corpus.expected_papers === POLICY.max_papers && report.local_extraction.by_paper.length === POLICY.max_papers && report.research_review_queue.length <= 5 },
-    { id: "daily-current-pilot", passed: report.corpus.ready && report.corpus.parser_gate_passed && report.local_extraction.papers_complete === POLICY.max_papers },
+    { id: "daily-pilot-state-honest", passed: dailyPilotStateHonest(report) },
     { id: "daily-no-automatic-authority", passed: report.automatic_inference === false && report.automatic_memory_promotion === false && report.authority === "candidate-only" },
     { id: "daily-offline-private", passed: report.network_requests === 0 && report.privacy === "local-private-no-export" && !JSON.stringify(report).includes("/Users/") }
   ];

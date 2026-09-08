@@ -1,0 +1,19 @@
+{
+  "schema_version": "dwin.capsule/v1",
+  "id": "setup-intelligence",
+  "version": "0.1.0",
+  "description": "Index explicitly registered AI-native setup components, expose exact lexical and graph evidence, and bridge a private snapshot into the optional hybrid Evidence Graph.",
+  "capabilities": {
+    "network": false,
+    "read_scopes": ["registered-setup"],
+    "write_scope": "factory-data"
+  },
+  "jobs": [
+    { "id": "index-registered", "script": "jobs/index-registered.mjs", "timeout_seconds": 120, "schedule": "manual" },
+    { "id": "bridge-evidence", "script": "jobs/bridge-evidence.mjs", "timeout_seconds": 120, "schedule": "manual" },
+    { "id": "evaluate-reconciliation", "script": "jobs/evaluate-reconciliation.mjs", "timeout_seconds": 60, "schedule": "manual" }
+  ],
+  "evaluators": [
+    { "id": "setup-integrity", "script": "evals/integrity.mjs", "timeout_seconds": 30 }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": "dwin.setup-reconciliation-case/v1",
+  "case_id": "arxiv-2609-05339v1-public-product",
+  "paper": {
+    "id": "2609.05339",
+    "version": 1,
+    "url": "https://arxiv.org/abs/2609.05339",
+    "content_trust": "untrusted-external"
+  },
+  "claim": "Agent memory should retain protected raw source evidence, isolate embedding generations, use a fixed schema, and test portability before model or embedding upgrades.",
+  "expected": {
+    "source_retention": "GAP_CANDIDATE",
+    "provenance": "OBSERVED_CANDIDATE",
+    "embedding_identity": "OBSERVED_CANDIDATE",
+    "migration_evaluation": "GAP_CANDIDATE",
+    "fixed_schema_memory": "OBSERVED_CANDIDATE",
+    "approval_gate": "OBSERVED_CANDIDATE",
+    "token_measurement": "GAP_CANDIDATE"
+  },
+  "acceptance_gate": "All declared statuses match, typed reconciliation has zero known self-reference/documentation/fixture/test positives, and no setup or Memory mutation occurs."
+}
