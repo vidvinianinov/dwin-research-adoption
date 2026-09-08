@@ -2,7 +2,7 @@
   "schema_version": "dwin.release-receipt/v1",
   "package": "dwin-research-adoption",
   "version": "0.2.0",
-  "generated_at": "2026-09-08T01:50:44.446Z",
+  "generated_at": "2026-09-08T18:40:03.869Z",
   "source_tree_sha256": "92aee901151e249bd5609492d9ec78ef0c2c25c6488eccf6b59eaeb9f4b20731",
   "source_files": 162,
   "gates": {
