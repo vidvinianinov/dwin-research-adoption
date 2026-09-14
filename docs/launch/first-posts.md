@@ -1,5 +1,23 @@
 # First launch posts
 
+## English — vision-first launch thread (X; also works as a Threads series)
+
+1. AI-native isn't “use a chatbot for more tasks.” It's a setup that knows its tools, skills, memory, and workflows—and can test whether a new research idea improves them. I'm building a local-first, open-source version.
+
+2. The loop: index your agent setup → watch versioned research → recover cited evidence → map it to capabilities and gaps → run a reversible baseline/intervention test → let a human approve any durable change.
+
+3. Day-to-day AI updates are noise until they answer: “What should change in my setup, and did it improve a task I actually do?” A paper is a trigger for a test, not an instruction to rewrite the agent.
+
+4. In one memory-portability case, the system parsed 18 pages into 186 source-bound blocks and indexed 144 local setup components. Typed reconciliation removed 22 known false positives from a naive keyword baseline in this labeled case and surfaced 3 gaps.
+
+5. We deferred adoption. Memory stayed unchanged. That negative result matters: a plausible paper does not become trusted agent behavior by default. This is one case, not proof of general accuracy or token savings.
+
+6. DWIN Research Adoption 0.2.0 is now a local MCP + 3 skills. The reproducible case, limitations, and install steps are here: https://github.com/vidvinianinov/dwin-research-adoption
+
+7. Which part of your agent setup is hardest to keep current: discovery, visibility, evaluation, or safe rollout?
+
+Publish this thread only after the `v0.2.0` GitHub release and npm package are verified. The numbered lines are separate posts, not one long post.
+
 ## English — X / Threads
 
 Your agent's memory can survive for months — then silently break after a model or embedding upgrade.
