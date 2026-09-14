@@ -84,7 +84,7 @@ The scheduled run executes only jobs declared `daily` in capsule manifests and w
 npx skills add vidvinianinov/dwin-research-adoption
 ```
 
-Current stable release: [v0.1.0](https://github.com/vidvinianinov/dwin-research-adoption/releases/tag/v0.1.0). The `0.2.0` setup-reconciliation release is validated locally and pending publication. Skill catalog: [skills.sh/vidvinianinov/dwin-research-adoption](https://www.skills.sh/vidvinianinov/dwin-research-adoption).
+Current stable release: [v0.2.0](https://github.com/vidvinianinov/dwin-research-adoption/releases/tag/v0.2.0). Skill catalog: [skills.sh/vidvinianinov/dwin-research-adoption](https://www.skills.sh/vidvinianinov/dwin-research-adoption).
 
 Included skills:
 
